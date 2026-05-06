@@ -1,7 +1,7 @@
 const CACHE = 'ppl-tracker-v1';
 const ASSETS = [
-  '/',
-  '/index.html',
+  '/ppl-tracker/',
+  '/ppl-tracker/index.html',
   '/manifest.json',
   'https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@600;700;800&display=swap'
 ];
