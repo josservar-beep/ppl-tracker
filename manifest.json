@@ -2,7 +2,7 @@
   "name": "PPL Tracker",
   "short_name": "PPL",
   "description": "Registro de sesiones PPL · Hipertrofia",
-  "start_url": "/",
+  "start_url": "/ppl-tracker/",
   "display": "standalone",
   "background_color": "#0a0a0a",
   "theme_color": "#0a0a0a",
