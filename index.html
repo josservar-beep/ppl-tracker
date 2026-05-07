@@ -10,7 +10,6 @@
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-192.png">
 <title>PPL Tracker</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
@@ -22,49 +21,36 @@
   --push:#6b3a8c;--pull:#2a7a8c;--lega:#2a7a4a;--legb:#7a6a1a;
   --radius:8px;--radius-lg:12px;
   --font-head:'Syne',sans-serif;--font-mono:'DM Mono',monospace;
-  --safe-top: env(safe-area-inset-top);
-  --safe-bottom: env(safe-area-inset-bottom);
+  --safe-top:env(safe-area-inset-top);--safe-bottom:env(safe-area-inset-bottom);
 }
 html,body{height:100%;background:var(--bg);color:var(--off);font-family:var(--font-mono);font-size:14px;overflow:hidden;}
 #app{display:flex;flex-direction:column;height:100vh;height:-webkit-fill-available;}
-
-/* HEADER */
 .header{background:var(--bg2);border-bottom:1px solid #222;padding:calc(var(--safe-top) + 10px) 16px 10px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
-.header-title{font-family:var(--font-head);font-size:16px;font-weight:800;color:var(--gold);letter-spacing:0.05em;}
+.header-title{font-family:var(--font-head);font-size:16px;font-weight:800;color:var(--gold);}
 .header-sub{font-size:10px;color:var(--grey);margin-top:2px;}
 .header-right{text-align:right;font-size:11px;color:var(--grey);}
 .header-right strong{color:var(--gold);font-family:var(--font-head);}
-
-/* DAY TABS */
 .day-tabs{display:flex;gap:6px;padding:10px 16px;background:var(--bg2);border-bottom:1px solid #222;overflow-x:auto;flex-shrink:0;-webkit-overflow-scrolling:touch;}
 .day-tabs::-webkit-scrollbar{display:none;}
-.day-tab{padding:7px 16px;border-radius:var(--radius);border:1px solid #333;background:var(--bg3);color:var(--grey);font-family:var(--font-head);font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;transition:all .15s;letter-spacing:0.05em;}
+.day-tab{padding:7px 16px;border-radius:var(--radius);border:1px solid #333;background:var(--bg3);color:var(--grey);font-family:var(--font-head);font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;transition:all .15s;}
 .day-tab.push.active{background:var(--push);border-color:var(--push);color:#fff;}
 .day-tab.pull.active{background:var(--pull);border-color:var(--pull);color:#fff;}
 .day-tab.lega.active{background:var(--lega);border-color:var(--lega);color:#fff;}
 .day-tab.legb.active{background:var(--legb);border-color:var(--legb);color:#fff;}
-
-/* SEMANA BAR */
 .semana-bar{display:flex;gap:5px;padding:8px 16px;background:var(--bg);border-bottom:1px solid #1a1a1a;align-items:center;flex-shrink:0;overflow-x:auto;-webkit-overflow-scrolling:touch;}
 .semana-bar::-webkit-scrollbar{display:none;}
 .semana-label{font-size:9px;color:var(--grey);margin-right:4px;white-space:nowrap;flex-shrink:0;}
 .sem-btn{padding:4px 10px;border-radius:var(--radius);border:1px solid #2a2a2a;background:var(--bg3);color:var(--grey);font-family:var(--font-mono);font-size:10px;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:all .15s;}
 .sem-btn.active{background:var(--gold);color:#000;border-color:var(--gold);font-weight:500;}
-.sem-btn.deload.active{background:var(--amber);color:#000;border-color:var(--amber);}
+.sem-btn.deload.active{background:var(--amber);color:#000;}
 .rir-badge{margin-left:auto;font-size:9px;padding:3px 8px;border-radius:var(--radius);background:#1a1200;color:var(--amber);border:1px solid #3a2a00;white-space:nowrap;flex-shrink:0;}
-
-/* STATS */
-.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:8px 16px;background:var(--bg);flex-shrink:0;}
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:8px 16px;flex-shrink:0;}
 .stat-card{background:var(--bg2);border:1px solid #1a1a1a;border-radius:var(--radius);padding:7px 8px;}
 .stat-val{font-family:var(--font-head);font-size:17px;font-weight:700;color:var(--gold2);}
 .stat-label{font-size:9px;color:var(--grey2);margin-top:1px;}
-
-/* SCROLL AREA */
 .scroll-area{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:10px 16px 16px;}
 .scroll-area::-webkit-scrollbar{width:3px;}
 .scroll-area::-webkit-scrollbar-thumb{background:#333;border-radius:3px;}
-
-/* EXERCISE CARD */
 .ex-card{background:var(--bg2);border:1px solid #222;border-radius:var(--radius-lg);overflow:hidden;margin-bottom:8px;}
 .ex-card.push{border-left:3px solid var(--push);}
 .ex-card.pull{border-left:3px solid var(--pull);}
@@ -75,79 +61,63 @@ html,body{height:100%;background:var(--bg);color:var(--off);font-family:var(--fo
 .ex-info{flex:1;min-width:0;}
 .ex-name{font-family:var(--font-head);font-size:13px;font-weight:700;color:var(--off);line-height:1.3;}
 .ex-muscle{font-size:10px;color:var(--grey);margin-top:2px;}
-.ex-badges{display:flex;gap:4px;margin-top:4px;align-items:center;}
+.ex-badges{display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;}
 .tipo-badge{font-size:9px;padding:2px 6px;border-radius:3px;font-weight:500;}
 .tipo-comp{background:#1a1200;color:var(--gold);border:1px solid #3a2a00;}
 .tipo-anal{background:#0a1a2a;color:var(--blue);border:1px solid #0a2a4a;}
 .ex-meta-badge{font-size:9px;padding:2px 6px;border-radius:3px;background:#1a1a1a;color:var(--grey2);}
 .ex-chevron{font-size:10px;color:var(--grey2);margin-top:2px;transition:transform .2s;}
 .ex-chevron.open{transform:rotate(180deg);}
-
-/* SERIES TABLE */
 .series-wrap{padding:0 12px 10px;}
-.series-header{display:grid;grid-template-columns:28px 1fr 1fr 60px 36px;gap:4px;padding:5px 0;border-bottom:1px solid #222;margin-bottom:5px;}
-.series-header span{font-size:9px;color:var(--grey2);text-align:center;}
-.series-header span:first-child{text-align:left;}
-.series-row{display:grid;grid-template-columns:28px 1fr 1fr 60px 36px;gap:4px;margin-bottom:6px;align-items:center;}
+.series-header{display:grid;grid-template-columns:26px 1fr 1fr 52px 34px 52px;gap:4px;padding:5px 0;border-bottom:1px solid #222;margin-bottom:5px;}
+.series-header span{font-size:8px;color:var(--grey2);text-align:center;line-height:1.3;}
+.series-row{display:grid;grid-template-columns:26px 1fr 1fr 52px 34px 52px;gap:4px;margin-bottom:6px;align-items:center;}
 .s-label{font-size:11px;color:var(--grey);font-weight:500;}
-.s-input{background:var(--bg);border:1px solid #2a2a2a;border-radius:var(--radius);color:var(--off);font-family:var(--font-mono);font-size:13px;padding:7px 4px;text-align:center;width:100%;transition:border .15s;-webkit-appearance:none;}
+.s-input{background:var(--bg);border:1px solid #2a2a2a;border-radius:var(--radius);color:var(--off);font-family:var(--font-mono);font-size:12px;padding:7px 3px;text-align:center;width:100%;-webkit-appearance:none;}
 .s-input:focus{outline:none;border-color:var(--gold-dim);background:#111;}
 .s-input.filled{border-color:#1a3a1a;color:var(--green);}
+.s-rir-real{background:var(--bg);border:1px solid #0a2a4a;border-radius:var(--radius);color:var(--blue);font-family:var(--font-mono);font-size:12px;padding:7px 3px;text-align:center;width:100%;-webkit-appearance:none;}
+.s-rir-real:focus{outline:none;border-color:var(--blue);background:#050f1a;}
+.s-rir-real.filled{border-color:var(--blue);color:var(--blue);}
 .s-vol{font-size:10px;color:var(--grey2);text-align:center;}
 .s-vol.has-val{color:var(--gold-dim);}
 .s-rir{font-size:10px;color:var(--amber);text-align:center;}
-
-/* CUES */
 .cues-wrap{padding:0 12px 10px;}
 .cues-text{font-size:11px;color:var(--grey2);background:var(--bg);border-radius:var(--radius);padding:8px 10px;border:1px solid #1a1a1a;line-height:1.7;}
-
-/* FOOTER */
 .footer{background:var(--bg2);border-top:1px solid #222;padding:10px 16px calc(var(--safe-bottom) + 10px);display:flex;gap:8px;flex-shrink:0;}
-.btn{flex:1;padding:11px 8px;border-radius:var(--radius);border:1px solid #333;background:var(--bg3);color:var(--off);font-family:var(--font-head);font-size:11px;font-weight:700;cursor:pointer;transition:all .15s;letter-spacing:0.03em;text-align:center;}
+.btn{flex:1;padding:11px 8px;border-radius:var(--radius);border:1px solid #333;background:var(--bg3);color:var(--off);font-family:var(--font-head);font-size:11px;font-weight:700;cursor:pointer;transition:all .15s;text-align:center;}
 .btn:active{opacity:.7;}
 .btn-primary{background:var(--gold);color:#000;border-color:var(--gold);}
 .btn-danger{border-color:#3a1a1a;color:var(--red);}
-
-/* MODAL */
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:200;align-items:flex-end;justify-content:center;padding:0;}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:200;align-items:flex-end;}
 .modal-overlay.open{display:flex;}
 .modal{background:var(--bg2);border:1px solid #333;border-radius:var(--radius-lg) var(--radius-lg) 0 0;padding:20px 16px calc(var(--safe-bottom) + 20px);width:100%;max-height:80vh;display:flex;flex-direction:column;gap:10px;}
 .modal-handle{width:36px;height:4px;background:#333;border-radius:2px;margin:0 auto 4px;}
 .modal-title{font-family:var(--font-head);font-size:14px;font-weight:800;color:var(--gold);}
 .modal-sub{font-size:10px;color:var(--grey);}
 .notice{font-size:10px;color:var(--amber);background:#1a1000;border:1px solid #3a2a00;border-radius:var(--radius);padding:6px 10px;}
-.csv-output{background:var(--bg);border:1px solid #222;border-radius:var(--radius);padding:10px;font-family:var(--font-mono);font-size:9px;color:var(--green);overflow-y:auto;flex:1;white-space:pre;min-height:100px;max-height:180px;}
+.csv-output{background:var(--bg);border:1px solid #222;border-radius:var(--radius);padding:10px;font-family:var(--font-mono);font-size:9px;color:var(--green);overflow-y:auto;flex:1;white-space:pre;min-height:80px;max-height:160px;}
 .modal-actions{display:flex;gap:8px;}
-.modal-actions .btn{font-size:11px;padding:11px 8px;}
-
-/* SAVED TOAST */
+.modal-actions .btn{font-size:11px;}
 .toast{position:fixed;bottom:calc(var(--safe-bottom) + 80px);left:50%;transform:translateX(-50%);background:var(--green);color:#000;font-family:var(--font-head);font-size:12px;font-weight:700;padding:8px 20px;border-radius:20px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:300;}
 .toast.show{opacity:1;}
-
-/* DELOAD BANNER */
 .deload-banner{background:#1a1000;border:1px solid #3a2a00;border-radius:var(--radius);padding:8px 12px;font-size:11px;color:var(--amber);margin-bottom:8px;text-align:center;}
 </style>
 </head>
 <body>
 <div id="app">
   <div class="header">
-    <div>
-      <div class="header-title">PPL TRACKER</div>
-      <div class="header-sub">Registro de sesión</div>
-    </div>
+    <div><div class="header-title">PPL TRACKER</div><div class="header-sub">v8 · Orden optimizado · RIR real</div></div>
     <div class="header-right" id="hRight"></div>
   </div>
-
   <div class="day-tabs" id="dayTabs"></div>
   <div class="semana-bar" id="semanaBar"></div>
   <div class="stats-bar" id="statsBar"></div>
-
   <div class="scroll-area" id="scrollArea"></div>
-
   <div class="footer">
     <button class="btn btn-danger" onclick="clearSession()">Limpiar</button>
     <button class="btn" onclick="openModal()">Exportar CSV</button>
-    <button class="btn btn-primary" onclick="saveLocal()">Guardar</button>
+    <button class="btn btn-primary" onclick="showToast('Guardado ✓')">Guardar</button>
   </div>
 </div>
 
@@ -156,7 +126,7 @@ html,body{height:100%;background:var(--bg);color:var(--off);font-family:var(--fo
     <div class="modal-handle"></div>
     <div class="modal-title">Exportar CSV</div>
     <div class="modal-sub" id="csvSub"></div>
-    <div class="notice">Lista para importar al Excel con la macro</div>
+    <div class="notice">Lista para importar al Excel con la macro · Incluye RIR real</div>
     <div class="csv-output" id="csvOut"></div>
     <div class="modal-actions">
       <button class="btn btn-primary" onclick="downloadCSV()">Descargar</button>
@@ -165,109 +135,87 @@ html,body{height:100%;background:var(--bg);color:var(--off);font-family:var(--fo
     </div>
   </div>
 </div>
-
 <div class="toast" id="toast"></div>
 
 <script>
-const ROUTINE = {
+const ROUTINE={
   Push:[
-    {name:"Press banca plano (barra)",muscle:"Pectoral mayor",tipo:"Compuesto",series:4,reps:"6-10",cue:"Retracción escapular antes de bajar. Barra al esternón medio. Pies en el suelo empujando. Tempo 3-1-1. No bloquees codos arriba."},
-    {name:"Press inclinado mancuernas 30°",muscle:"Pectoral clavicular",tipo:"Compuesto",series:4,reps:"8-12",cue:"Banco a 30°. Estira el pecho en la bajada buscando máximo ROM. Codos a 45° del torso. Giro neutro→supino al subir."},
-    {name:"Press militar mancuernas sentado",muscle:"Deltoides anterior",tipo:"Compuesto",series:4,reps:"8-12",cue:"Núcleo apretado, espalda recta. Mancuernas a altura de oreja al bajar. Empuja arriba y ligeramente atrás."},
-    {name:"Apertura polea banco inclinado 30°",muscle:"Pectoral clavicular",tipo:"Analítico",series:4,reps:"10-15",cue:"Poleas a altura del banco. Siente el estiramiento abajo. Contracción activa en el cruce. Codos ligeramente flexionados fijos."},
-    {name:"Elevación frontal disco",muscle:"Deltoides anterior",tipo:"Analítico",series:4,reps:"12-15",cue:"Supina ligeramente al subir para mayor activación. Hasta altura de hombros. Excéntrico 3 seg. No balancees el torso."},
-    {name:"Press francés barra Z",muscle:"Tríceps long head",tipo:"Compuesto",series:4,reps:"8-12",cue:"Codos verticales pegados. Baja la barra a frente/coronilla. Long head en máximo estiramiento. Tempo 3-1-1."},
-    {name:"Extensión tríceps polea supino",muscle:"Tríceps lateral",tipo:"Analítico",series:3,reps:"10-15",cue:"Agarre supino (palmas arriba). Codos pegados al cuerpo. Extiende completamente. Unilateral permite mayor ROM."},
+    {name:"Press banca plano (barra)",muscle:"Pectoral mayor",tipo:"Compuesto",series:4,reps:"6-10",cue:"Retracción escapular antes de bajar. Barra al esternón medio. Pies en el suelo empujando. Tempo 3-1-1."},
+    {name:"Press inclinado mancuernas 30°",muscle:"Pectoral clavicular",tipo:"Compuesto",series:4,reps:"8-12",cue:"Banco a 30°. Máximo ROM en bajada. Codos a 45° del torso. Giro neutro→supino al subir."},
+    {name:"Apertura polea banco inclinado 30°",muscle:"Pectoral clavicular",tipo:"Analítico",series:4,reps:"10-15",cue:"Poleas a altura del banco. Estiramiento máximo abajo. Contracción activa en el cruce."},
+    {name:"Press militar mancuernas sentado",muscle:"Deltoides anterior",tipo:"Compuesto",series:4,reps:"8-12",cue:"Núcleo apretado. Mancuernas a altura de oreja al bajar. Empuja arriba y ligeramente atrás."},
+    {name:"Elevación frontal disco",muscle:"Deltoides anterior",tipo:"Analítico",series:4,reps:"12-15",cue:"Supinación ligera al subir. Hasta altura de hombros. Excéntrico 3 seg. Sin balanceo."},
+    {name:"Press francés barra Z",muscle:"Tríceps long head",tipo:"Compuesto",series:4,reps:"8-12",cue:"Codos verticales pegados. Baja a frente/coronilla. Long head en máximo estiramiento."},
+    {name:"Extensión tríceps polea supino",muscle:"Tríceps lateral",tipo:"Analítico",series:3,reps:"10-15",cue:"Agarre supino. Codos pegados al cuerpo. Extensión completa. Unilateral mayor ROM."},
   ],
   Pull:[
-    {name:"Dominadas agarre prono",muscle:"Dorsal ancho",tipo:"Compuesto",series:4,reps:"6-10",cue:"Manos ligeramente más abiertas que hombros. Retrae escápulas antes de tirar. Sube hasta mentón supera barra. Baja completo."},
-    {name:"Jalón cerrado supino cable",muscle:"Dorsal ancho",tipo:"Compuesto",series:4,reps:"8-12",cue:"Agarre supino cerrado activa bíceps. Lleva barra al esternón. Codos hacia atrás y abajo. Mantén el pecho alto."},
-    {name:"Remo horizontal agarre cerrado neutro",muscle:"Dorsal medio / trapecio",tipo:"Compuesto",series:4,reps:"8-12",cue:"Torso a 30°. Codos pegados al cuerpo hacia caderas. Contrae el dorsal al final. No uses el trapecio."},
-    {name:"T-Row barra agarre abierto",muscle:"Trapecio medio / romboides",tipo:"Compuesto",series:4,reps:"8-12",cue:"Codos a 90° del torso. Retrae escápulas arriba. Espalda neutra siempre. No redondees."},
-    {name:"Rear delt row banco inclinado",muscle:"Deltoides posterior",tipo:"Compuesto",series:4,reps:"10-15",cue:"Pecho en banco inclinado. Codos a 90° hacia los lados. Squeeze deltoides posterior. Peso ligero."},
-    {name:"Face Pull cuerda altura ojos",muscle:"Deltoides post. / manguito",tipo:"Analítico",series:4,reps:"12-15",cue:"Polea a altura de ojos. Cuerda. Tira hacia la cara separando los extremos. Codos por encima de los hombros."},
-    {name:"Curl barra Z agarre estrecho",muscle:"Bíceps (porción larga)",tipo:"Analítico",series:4,reps:"8-12",cue:"Codos fijos a los costados. Supina completamente al subir. Baja despacio 3 seg. Sin momentum."},
+    {name:"Dominadas agarre prono",muscle:"Dorsal ancho",tipo:"Compuesto",series:4,reps:"6-10",cue:"Manos ligeramente más abiertas que hombros. Retrae escápulas. Baja completamente. Tempo 2-0-2."},
+    {name:"Jalón cerrado supino cable",muscle:"Dorsal ancho",tipo:"Compuesto",series:4,reps:"8-12",cue:"Agarre supino cerrado. Barra al esternón. Codos hacia atrás y abajo. Pecho alto."},
+    {name:"T-Row barra agarre abierto",muscle:"Trapecio medio / romboides",tipo:"Compuesto",series:4,reps:"8-12",cue:"Codos a 90° del torso. Retrae escápulas arriba. Espalda neutra. Va antes que el remo de apoyo."},
+    {name:"Remo horizontal agarre cerrado neutro",muscle:"Dorsal medio / trapecio",tipo:"Compuesto",series:4,reps:"8-12",cue:"Torso a 30°. Codos pegados al cuerpo hacia caderas. Contrae el dorsal al final."},
+    {name:"Rear delt row banco inclinado",muscle:"Deltoides posterior",tipo:"Compuesto",series:4,reps:"10-15",cue:"Pecho en banco 30-45°. Codos a 90° hacia los lados. Squeeze deltoides posterior."},
+    {name:"Face Pull cuerda altura ojos",muscle:"Deltoides post. / manguito",tipo:"Analítico",series:4,reps:"12-15",cue:"Polea a ojos. Tira separando extremos de la cuerda. Codos por encima de hombros."},
+    {name:"Curl barra Z agarre estrecho",muscle:"Bíceps (porción larga)",tipo:"Analítico",series:4,reps:"8-12",cue:"Codos fijos. Supinación completa al subir. Bajada lenta 3 seg. Sin momentum."},
     {name:"Curl martillo mancuernas",muscle:"Braquial / braquiorradial",tipo:"Analítico",series:3,reps:"10-12",cue:"Agarre neutro. Codo fijo al costado. Sube verticalmente. Excéntrico lento."},
   ],
   LegsA:[
-    {name:"Hip thrust barra",muscle:"Glúteo mayor",tipo:"Compuesto",series:5,reps:"8-15",cue:"ACTIVA con banda antes (20 reps puente). Omóplatos en banco. Empuja con talones. Squeeze 1 seg arriba. No hiperextiendas lumbar."},
-    {name:"Sentadilla trasera high bar",muscle:"Cuádriceps / glúteo",tipo:"Compuesto",series:4,reps:"6-10",cue:"High bar: barra alta en trapecios. Pies anchura hombros. Rompe por caderas y rodillas a la vez. Paralelo o abajo."},
-    {name:"Prensa 45° pies altos",muscle:"Cuádriceps / glúteo",tipo:"Compuesto",series:4,reps:"10-15",cue:"Pies altos activan cuádriceps. Rodillas no pasan 90° al bajar. Empuja con talones. Excéntrico 3 seg."},
-    {name:"Abductor máquina",muscle:"Glúteo medio",tipo:"Analítico",series:4,reps:"12-20",cue:"Erguido, no te eches. Abre lento 2 seg. Siente el glúteo medio. Sin ayuda del torso."},
+    {name:"Hip thrust barra",muscle:"Glúteo mayor",tipo:"Compuesto",series:5,reps:"8-15",cue:"ACTIVA con banda antes (20 reps). Omóplatos en banco. Empuja con talones. Squeeze 1 seg arriba."},
+    {name:"Sentadilla trasera high bar",muscle:"Cuádriceps / glúteo",tipo:"Compuesto",series:4,reps:"6-10",cue:"High bar en trapecios. Pies anchura hombros. Rompe por caderas y rodillas a la vez."},
+    {name:"Prensa 45° pies altos",muscle:"Cuádriceps / glúteo",tipo:"Compuesto",series:4,reps:"10-15",cue:"Pies altos activan cuádriceps. Rodillas max 90° al bajar. Excéntrico 3 seg."},
+    {name:"Extensión cuádriceps máquina",muscle:"Cuádriceps",tipo:"Analítico",series:3,reps:"12-20",cue:"Tempo 2-1-2. Contracción isométrica 1 seg arriba. Cierra el bloque de cuádriceps."},
+    {name:"Abductor máquina",muscle:"Glúteo medio",tipo:"Analítico",series:4,reps:"12-20",cue:"Erguido, no te eches. Abre lento 2 seg. Siente el glúteo medio."},
     {name:"Aductor máquina",muscle:"Aductores",tipo:"Analítico",series:3,reps:"12-20",cue:"Cierra controlando la resistencia. Excéntrico lento. No choques las almohadillas."},
-    {name:"Extensión cuádriceps máquina",muscle:"Cuádriceps",tipo:"Analítico",series:3,reps:"12-20",cue:"Tempo 2-1-2. Contracción isométrica 1 seg arriba. Rango completo."},
-    {name:"Elevación gemelos de pie",muscle:"Gastrocnemio",tipo:"Analítico",series:4,reps:"12-20",cue:"Rango completo: talón abajo máximo, punta arriba máximo. Pausa 1 seg arriba. Tempo 2-1-2."},
+    {name:"Elevación gemelos de pie",muscle:"Gastrocnemio",tipo:"Analítico",series:4,reps:"12-20",cue:"Rango completo: talón abajo máximo, punta arriba máximo. Pausa 1 seg arriba."},
   ],
   LegsB:[
-    {name:"RDL barra",muscle:"Femoral / glúteo mayor",tipo:"Compuesto",series:4,reps:"8-10",cue:"Espalda neutra siempre. Empuja caderas atrás, no dobles rodillas. Barra pegada al cuerpo. Para al sentir el estiramiento femoral."},
-    {name:"Curl femoral tumbado (máquina)",muscle:"Femoral (bíceps femoral)",tipo:"Analítico",series:4,reps:"10-15",cue:"Pelvis pegada al banco. Contracción isométrica 1 seg. Excéntrico 3 seg. Último set: dropset."},
-    {name:"Sentadilla búlgara mancuernas",muscle:"Femoral / glúteo / cuád",tipo:"Compuesto",series:4,reps:"8-12",cue:"Pie trasero en banco. Baja verticalmente. Rodilla trasera toca el suelo. Torso erguido."},
-    {name:"Curl femoral pie unilateral cable",muscle:"Femoral (porción larga)",tipo:"Analítico",series:3,reps:"10-15",cue:"Cadera extendida activa porción larga del femoral. Excéntrico controlado. Sin torso."},
+    {name:"RDL barra",muscle:"Femoral / glúteo mayor",tipo:"Compuesto",series:4,reps:"8-10",cue:"Espalda neutra siempre. Empuja caderas atrás, no dobles rodillas. Barra pegada al cuerpo."},
+    {name:"Curl femoral tumbado (máquina)",muscle:"Femoral (bíceps femoral)",tipo:"Analítico",series:4,reps:"10-15",cue:"Pelvis pegada al banco. Contracción isométrica 1 seg. Excéntrico 3 seg."},
+    {name:"Sentadilla búlgara mancuernas",muscle:"Femoral / glúteo / cuád",tipo:"Compuesto",series:4,reps:"8-12",cue:"Pie trasero en banco. Baja verticalmente. Torso erguido. Pie delantero alejado = más glúteo."},
+    {name:"Curl femoral pie unilateral cable",muscle:"Femoral (porción larga)",tipo:"Analítico",series:3,reps:"10-15",cue:"Cadera extendida activa porción larga. Excéntrico controlado. Cierra el bloque femoral."},
     {name:"Abductor máquina",muscle:"Glúteo medio",tipo:"Analítico",series:4,reps:"12-20",cue:"Erguido. Abre lento. Siente el glúteo medio. Tensión constante."},
     {name:"Aductor máquina",muscle:"Aductores",tipo:"Analítico",series:3,reps:"12-20",cue:"Cierra controlando. Excéntrico lento."},
     {name:"Elevación gemelos sentado (sóleo)",muscle:"Sóleo",tipo:"Analítico",series:4,reps:"12-20",cue:"Rodillas a 90°. Sóleo dominante. Rango completo. Pausa 1 seg arriba."},
   ]
 };
 
-const DAYS=[
-  {key:"Push",label:"Push",cls:"push"},
-  {key:"Pull",label:"Pull",cls:"pull"},
-  {key:"LegsA",label:"Legs A",cls:"lega"},
-  {key:"LegsB",label:"Legs B",cls:"legb"},
-];
-
+const DAYS=[{key:"Push",label:"Push",cls:"push"},{key:"Pull",label:"Pull",cls:"pull"},{key:"LegsA",label:"Legs A",cls:"lega"},{key:"LegsB",label:"Legs B",cls:"legb"}];
 let state={day:"Push",semana:1,openCues:{}};
-
 function sk(d,s,ei,si,f){return `${d}_s${s}_ex${ei}_s${si}_${f}`;}
 function getV(k){return localStorage.getItem(k)||"";}
 function setV(k,v){if(v)localStorage.setItem(k,v);else localStorage.removeItem(k);}
 
 function initHeader(){
   const now=new Date();
-  const ds=now.toLocaleDateString("es-ES",{weekday:"short",day:"numeric",month:"short"});
-  document.getElementById("hRight").innerHTML=`<div>${ds}</div><strong>Sem ${state.semana}</strong>`;
+  document.getElementById("hRight").innerHTML=`<div>${now.toLocaleDateString("es-ES",{weekday:"short",day:"numeric",month:"short"})}</div><strong>Sem ${state.semana}</strong>`;
 }
-
 function buildDayTabs(){
-  document.getElementById("dayTabs").innerHTML=DAYS.map(d=>
-    `<button class="day-tab ${d.cls}${state.day===d.key?" active":""}" onclick="setDay('${d.key}')">${d.label}</button>`
-  ).join("");
+  document.getElementById("dayTabs").innerHTML=DAYS.map(d=>`<button class="day-tab ${d.cls}${state.day===d.key?" active":""}" onclick="setDay('${d.key}')">${d.label}</button>`).join("");
 }
-
 function buildSemana(){
-  const btns=[1,2,3,4,5].map(s=>
-    `<button class="sem-btn${s===5?" deload":""}${state.semana===s?" active":""}" onclick="setSem(${s})">Sem ${s}${s===5?" · DL":""}</button>`
-  ).join("");
-  document.getElementById("semanaBar").innerHTML=
-    `<span class="semana-label">SEM</span>${btns}<span class="rir-badge" id="rirB">${state.semana===5?"RIR 3-4 · DELOAD":"RIR OBJ: 2-3"}</span>`;
+  const btns=[1,2,3,4,5].map(s=>`<button class="sem-btn${s===5?" deload":""}${state.semana===s?" active":""}" onclick="setSem(${s})">Sem ${s}${s===5?" · DL":""}</button>`).join("");
+  document.getElementById("semanaBar").innerHTML=`<span class="semana-label">SEM</span>${btns}<span class="rir-badge">${state.semana===5?"RIR 3-4 · DELOAD":"RIR OBJ: 2-3"}</span>`;
 }
-
 function setDay(d){state.day=d;state.openCues={};buildDayTabs();render();updateStats();}
 function setSem(s){state.semana=s;state.openCues={};buildSemana();initHeader();render();updateStats();}
 
 function render(){
-  const exs=ROUTINE[state.day];
-  const d=state.day,s=state.semana;
-  const cls=DAYS.find(x=>x.key===d).cls;
-  const isDeload=s===5;
-  let html="";
-  if(isDeload) html+=`<div class="deload-banner">SEMANA DELOAD · -40% volumen · RIR 3-4 · Mantén técnica impecable</div>`;
+  const exs=ROUTINE[state.day],d=state.day,s=state.semana;
+  const cls=DAYS.find(x=>x.key===d).cls,isDeload=s===5;
+  let html=isDeload?`<div class="deload-banner">SEMANA DELOAD · -40% volumen · RIR 3-4</div>`:"";
   exs.forEach((ex,ei)=>{
     const ns=isDeload?Math.max(1,Math.floor(ex.series*0.6)):ex.series;
     let rows="";
     for(let si=0;si<ns;si++){
-      const rk=sk(d,s,ei,si,"r"),pk=sk(d,s,ei,si,"p");
-      const rv=getV(rk),pv=getV(pk);
+      const rk=sk(d,s,ei,si,"r"),pk=sk(d,s,ei,si,"p"),rrk=sk(d,s,ei,si,"rr");
+      const rv=getV(rk),pv=getV(pk),rrv=getV(rrk);
       const vol=rv&&pv?(parseFloat(rv)*parseFloat(pv)).toFixed(0)+"kg":"—";
-      const hasVol=rv&&pv;
       rows+=`<div class="series-row">
         <span class="s-label">S${si+1}</span>
-        <input class="s-input${rv?" filled":""}" type="number" inputmode="decimal" step="1" min="0" placeholder="—" value="${rv}"
-          onchange="inputChange(this,'${rk}','${d}','${s}','${ei}','${si}')" id="r_${d}_${s}_${ei}_${si}">
-        <input class="s-input${pv?" filled":""}" type="number" inputmode="decimal" step="0.5" min="0" placeholder="—" value="${pv}"
-          onchange="inputChange(this,'${pk}','${d}','${s}','${ei}','${si}')" id="p_${d}_${s}_${ei}_${si}">
-        <span class="s-vol${hasVol?" has-val":""}" id="vol_${d}_${s}_${ei}_${si}">${vol}</span>
+        <input class="s-input${rv?" filled":""}" type="number" inputmode="decimal" step="1" min="0" placeholder="—" value="${rv}" onchange="inputChange(this,'${rk}','${d}','${s}','${ei}','${si}')">
+        <input class="s-input${pv?" filled":""}" type="number" inputmode="decimal" step="0.5" min="0" placeholder="—" value="${pv}" onchange="inputChange(this,'${pk}','${d}','${s}','${ei}','${si}')">
+        <span class="s-vol${rv&&pv?" has-val":""}" id="vol_${d}_${s}_${ei}_${si}">${vol}</span>
         <span class="s-rir">${isDeload?"3-4":"2-3"}</span>
+        <input class="s-rir-real${rrv?" filled":""}" type="number" inputmode="decimal" step="0.5" min="0" max="5" placeholder="—" value="${rrv}" onchange="setV('${rrk}',this.value);if(this.value)this.classList.add('filled');else this.classList.remove('filled');updateStats();">
       </div>`;
     }
     const cueOpen=state.openCues[ei];
@@ -285,7 +233,11 @@ function render(){
         <span class="ex-chevron${cueOpen?" open":""}">▾</span>
       </div>
       <div class="series-wrap">
-        <div class="series-header"><span>SERIE</span><span>REPS</span><span>PESO kg</span><span>VOL</span><span>RIR</span></div>
+        <div class="series-header">
+          <span></span><span>REPS</span><span>PESO kg</span><span>VOL</span>
+          <span style="color:var(--amber)">RIR<br>OBJ</span>
+          <span style="color:var(--blue)">RIR<br>REAL</span>
+        </div>
         ${rows}
       </div>
       ${cueOpen?`<div class="cues-wrap"><div class="cues-text">${ex.cue}</div></div>`:""}
@@ -294,60 +246,38 @@ function render(){
   document.getElementById("scrollArea").innerHTML=html;
 }
 
-function inputChange(inp,key,d,s,ei,si,f){
-  const val=inp.value;
-  setV(key,val);
-  if(val) inp.classList.add("filled"); else inp.classList.remove("filled");
-  const rk=sk(d,s,ei,si,"r"),pk=sk(d,s,ei,si,"p");
-  const rv=getV(rk),pv=getV(pk);
+function inputChange(inp,key,d,s,ei,si){
+  setV(key,inp.value);
+  inp.value?inp.classList.add("filled"):inp.classList.remove("filled");
+  const r=getV(sk(d,s,ei,si,"r")),p=getV(sk(d,s,ei,si,"p"));
   const el=document.getElementById(`vol_${d}_${s}_${ei}_${si}`);
-  if(rv&&pv){
-    el.textContent=(parseFloat(rv)*parseFloat(pv)).toFixed(0)+"kg";
-    el.classList.add("has-val");
-  }else{
-    el.textContent="—";
-    el.classList.remove("has-val");
-  }
+  if(r&&p){el.textContent=(parseFloat(r)*parseFloat(p)).toFixed(0)+"kg";el.classList.add("has-val");}
+  else{el.textContent="—";el.classList.remove("has-val");}
   updateStats();
 }
 
 function toggleCue(ei){
   state.openCues[ei]=!state.openCues[ei];
   const card=document.querySelectorAll(".ex-card")[ei];
-  const chevron=card.querySelector(".ex-chevron");
-  const cueWrap=card.querySelector(".cues-wrap");
-  const seriesWrap=card.querySelector(".series-wrap");
-  if(state.openCues[ei]){
-    chevron.classList.add("open");
-    if(!cueWrap){
-      const div=document.createElement("div");
-      div.className="cues-wrap";
-      div.innerHTML=`<div class="cues-text">${ROUTINE[state.day][ei].cue}</div>`;
-      card.appendChild(div);
-    }
-  }else{
-    chevron.classList.remove("open");
-    if(cueWrap) cueWrap.remove();
-  }
+  card.querySelector(".ex-chevron").classList.toggle("open",state.openCues[ei]);
+  if(state.openCues[ei]&&!card.querySelector(".cues-wrap")){
+    const div=document.createElement("div");div.className="cues-wrap";
+    div.innerHTML=`<div class="cues-text">${ROUTINE[state.day][ei].cue}</div>`;
+    card.appendChild(div);
+  }else if(!state.openCues[ei]){const cw=card.querySelector(".cues-wrap");if(cw)cw.remove();}
 }
 
 function updateStats(){
-  const d=state.day,s=state.semana;
-  const exs=ROUTINE[d];
-  const isDeload=s===5;
+  const d=state.day,s=state.semana,exs=ROUTINE[d],isDeload=s===5;
   let vol=0,done=0,filled=0,totalS=0;
   exs.forEach((ex,ei)=>{
     const ns=isDeload?Math.max(1,Math.floor(ex.series*0.6)):ex.series;
-    totalS+=ns;
-    let exDone=true;
+    totalS+=ns;let exDone=true;
     for(let si=0;si<ns;si++){
-      const r=parseFloat(getV(sk(d,s,ei,si,"r")))||0;
-      const p=parseFloat(getV(sk(d,s,ei,si,"p")))||0;
-      vol+=r*p;
-      if(r>0&&p>0) filled++;
-      else exDone=false;
+      const r=parseFloat(getV(sk(d,s,ei,si,"r")))||0,p=parseFloat(getV(sk(d,s,ei,si,"p")))||0;
+      vol+=r*p;if(r>0&&p>0)filled++;else exDone=false;
     }
-    if(exDone&&ns>0) done++;
+    if(exDone&&ns>0)done++;
   });
   document.getElementById("statsBar").innerHTML=`
     <div class="stat-card"><div class="stat-val">${exs.length}</div><div class="stat-label">Ejercicios</div></div>
@@ -356,43 +286,17 @@ function updateStats(){
     <div class="stat-card"><div class="stat-val">${Math.round(vol).toLocaleString()}</div><div class="stat-label">Vol. kg</div></div>`;
 }
 
-function saveLocal(){
-  showToast("Guardado");
-}
-
-function showToast(msg){
-  const t=document.getElementById("toast");
-  t.textContent=msg;
-  t.classList.add("show");
-  setTimeout(()=>t.classList.remove("show"),2000);
-}
-
-function clearSession(){
-  if(!confirm("¿Limpiar datos de esta sesión?"))return;
-  const d=state.day,s=state.semana;
-  ROUTINE[d].forEach((_,ei)=>{
-    for(let si=0;si<5;si++){
-      localStorage.removeItem(sk(d,s,ei,si,"r"));
-      localStorage.removeItem(sk(d,s,ei,si,"p"));
-    }
-  });
-  render();updateStats();
-}
-
 function generateCSV(){
-  const d=state.day,s=state.semana;
-  const exs=ROUTINE[d];
-  const isDeload=s===5;
+  const d=state.day,s=state.semana,exs=ROUTINE[d],isDeload=s===5;
   const dateStr=new Date().toISOString().split("T")[0];
   const dayLabel=DAYS.find(x=>x.key===d).label;
-  const rir=isDeload?"3-4":"2-3";
-  let lines=["fecha,dia,semana,ejercicio,musculo,tipo,serie,reps,peso_kg,volumen_kg,rir_objetivo"];
+  let lines=["fecha,dia,semana,ejercicio,musculo,tipo,serie,reps,peso_kg,volumen_kg,rir_objetivo,rir_real"];
   exs.forEach((ex,ei)=>{
     const ns=isDeload?Math.max(1,Math.floor(ex.series*0.6)):ex.series;
     for(let si=0;si<ns;si++){
-      const r=getV(sk(d,s,ei,si,"r")),p=getV(sk(d,s,ei,si,"p"));
+      const r=getV(sk(d,s,ei,si,"r")),p=getV(sk(d,s,ei,si,"p")),rr=getV(sk(d,s,ei,si,"rr"));
       const vol=r&&p?(parseFloat(r)*parseFloat(p)).toFixed(1):"";
-      lines.push([dateStr,dayLabel,`Sem ${s}`,`"${ex.name}"`,`"${ex.muscle}"`,ex.tipo,si+1,r||"",p||"",vol,rir].join(","));
+      lines.push([dateStr,dayLabel,`Sem ${s}`,`"${ex.name}"`,`"${ex.muscle}"`,ex.tipo,si+1,r||"",p||"",vol,isDeload?"3-4":"2-3",rr||""].join(","));
     }
   });
   return lines.join("\n");
@@ -400,38 +304,32 @@ function generateCSV(){
 
 function openModal(){
   const d=state.day,s=state.semana;
-  const dayLabel=DAYS.find(x=>x.key===d).label;
-  document.getElementById("csvSub").textContent=`${dayLabel} · Semana ${s} · ${new Date().toLocaleDateString("es-ES")}`;
+  document.getElementById("csvSub").textContent=`${DAYS.find(x=>x.key===d).label} · Semana ${s} · ${new Date().toLocaleDateString("es-ES")}`;
   document.getElementById("csvOut").textContent=generateCSV();
   document.getElementById("modal").classList.add("open");
 }
 function closeModal(){document.getElementById("modal").classList.remove("open");}
-
 function downloadCSV(){
   const d=state.day,s=state.semana;
-  const dayLabel=DAYS.find(x=>x.key===d).label;
-  const dateStr=new Date().toISOString().split("T")[0];
   const blob=new Blob([generateCSV()],{type:"text/csv"});
   const url=URL.createObjectURL(blob);
-  const a=document.createElement("a");
-  a.href=url;a.download=`PPL_${dayLabel}_Sem${s}_${dateStr}.csv`;
-  a.click();URL.revokeObjectURL(url);
-  closeModal();
+  const a=document.createElement("a");a.href=url;
+  a.download=`PPL_${DAYS.find(x=>x.key===d).label}_Sem${s}_${new Date().toISOString().split("T")[0]}.csv`;
+  a.click();URL.revokeObjectURL(url);closeModal();
 }
-
-function copyCSV(){
-  navigator.clipboard.writeText(generateCSV()).then(()=>{closeModal();showToast("CSV copiado");});
+function copyCSV(){navigator.clipboard.writeText(generateCSV()).then(()=>{closeModal();showToast("CSV copiado ✓");});}
+function clearSession(){
+  if(!confirm("¿Limpiar datos de esta sesión?"))return;
+  const d=state.day,s=state.semana;
+  ROUTINE[d].forEach((_,ei)=>{for(let si=0;si<5;si++){["r","p","rr"].forEach(f=>localStorage.removeItem(sk(d,s,ei,si,f)));}});
+  render();updateStats();
 }
-
-// INIT
+function showToast(msg){
+  const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");
+  setTimeout(()=>t.classList.remove("show"),2000);
+}
 initHeader();buildDayTabs();buildSemana();render();updateStats();
-
-// SW registration
-if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{
-    navigator.serviceWorker.register('sw.js').catch(()=>{});
-  });
-}
+if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
 </script>
 </body>
 </html>
